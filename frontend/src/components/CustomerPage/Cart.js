@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import "bootstrap/dist/css/bootstrap.min.css;
 import { ArrowLeft } from 'lucide-react';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
