@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { Button, Container, Row, Col } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./components/DefaultPage/Login";
 import Register from "./components/DefaultPage/Register";
