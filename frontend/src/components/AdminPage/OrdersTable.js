@@ -155,61 +155,76 @@ const OrdersTable = () => {
           <p className="mt-2">Loading orders...</p>
         </div>
       ) : (
-        <div className="table-responsive">
-          <table className="table table-bordered table-hover shadow-sm">
-            <thead className="table-light">
-              <tr>
-                <th>ID</th>
-                <th>Total Price</th>
-                <th>Checkout Date</th>
-                <th>Status</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody style={{ cursor: "pointer", backgroundColor: "#f8f9fa", justifyContent: "center", display: "flex-column" }}>
-              {filteredOrders.map((order) => (
-                <tr key={order.id}>
-                  <td>{order.id}</td>
-                  <td>₱{parseFloat(order.total_price).toFixed(2)}</td>
-                  <td>
-                    {order.checkout_date
-                      ? new Date(order.checkout_date).toLocaleString("en-PH", {
-                          timeZone: "Asia/Manila",
-                        })
-                      : "N/A"}
-                  </td>
-                  <td>
-                    <span
-                      className={`badge ${
-                        order.status === "completed"
-                          ? "bg-success text-light py-3 px-3" 
-                          : "bg-warning text-dark py-3 px-4"
-                      }`}
-                    >
-                      {order.status}
-                    </span>
-                  </td>
-                  <td>
+        <div
+        style={{
+          width: "100%",
+          maxWidth: "1000px",
+          margin: "0 auto",
+          overflowX: "auto",
+        }}
+      >
+        <table
+          className="table table-bordered table-hover shadow-sm"
+          style={{
+            tableLayout: "auto",
+            minWidth: "900px",
+          }}
+        >
+          <thead className="table-light">
+            <tr>
+              <th style={{ minWidth: "80px" }}>ID</th>
+              <th style={{ minWidth: "120px" }}>Total Price</th>
+              <th style={{ minWidth: "200px" }}>Checkout Date</th>
+              <th style={{ minWidth: "120px" }}>Status</th>
+              <th style={{ minWidth: "180px" }}>Action</th>
+            </tr>
+          </thead>
+          <tbody className= "table-header text-center" style={{ backgroundColor: "#f8f9fa" }}>
+            {filteredOrders.map((order) => (
+              <tr key={order.id}>
+              <td className="text-center">{order.id}</td>
+              <td className="text-center">₱{parseFloat(order.total_price).toFixed(2)}</td>
+              <td className="text-center">
+                {order.checkout_date
+                  ? new Date(order.checkout_date).toLocaleString("en-PH", {
+                      timeZone: "Asia/Manila",
+                    })
+                  : "N/A"}
+              </td>
+              <td className="text-center">
+                <span
+                  className={`badge ${
+                    order.status === "completed"
+                      ? "bg-success text-light py-2 px-3"
+                      : "bg-warning text-dark py-2 px-3"
+                  }`}
+                >
+                  {order.status}
+                </span>
+              </td>
+              <td className="text-center">
+                <div className="d-flex justify-content-center gap-2">
+                  <button
+                    className="btn btn-info btn-sm"
+                    onClick={() => handleViewDetails(order)}
+                  >
+                    View Details
+                  </button>
+                  {order.status !== "completed" && (
                     <button
-                      className="btn btn-info btn-sm"
-                      onClick={() => handleViewDetails(order)}
+                      className="btn btn-warning btn-sm"
+                      onClick={() => handleMarkAsComplete(order)}
                     >
-                      View Details
+                      Mark as Complete
                     </button>
-                    {order.status !== "completed" && (
-                      <button
-                        className="btn btn-warning btn-sm"
-                        onClick={() => handleMarkAsComplete(order)}
-                      >
-                        Mark as Complete
-                      </button>
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+                  )}
+                </div>
+              </td>
+            </tr>            
+            ))}
+          </tbody>
+        </table>
+      </div>
       )}
 
       {/* Order Items Modal */}
