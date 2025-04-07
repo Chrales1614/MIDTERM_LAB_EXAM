@@ -49,7 +49,11 @@ const Header = ({ cartCount = 0, isAuthenticated = false }) => {
                     background: "linear-gradient(135deg,rgb(33, 41, 65),rgb(72, 79, 121))", 
                     color: "#FFF", 
                     boxSizing: "border-box", 
-                    width: "100%"
+                    width: "100%",
+                    position: "fixed",
+                    top: 0,
+                    left: 0,
+                    zIndex: 1000
                 }}
             >
                 <Container fluid>
@@ -63,7 +67,11 @@ const Header = ({ cartCount = 0, isAuthenticated = false }) => {
                             className="me-2" 
                             style={{ 
                                 color: "#FFD700",
-                                filter: "drop-shadow(0 0 3px rgba(255, 215, 0, 0.5))"
+                                filter: "drop-shadow(0 0 3px rgba(255, 215, 0, 0.5))",
+                                transition: "transform 0.3s",
+                                "&:hover": {
+                                    transform: "scale(1.1)",
+                                },
                             }}
                         />
                         ElectroZone

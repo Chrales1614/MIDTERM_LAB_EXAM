@@ -44,10 +44,10 @@ const CustomerDashboard = ({ isAuthenticated }) => {
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);
     };
-
+    
     return (
-        <div className="container mt-4">
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+        <div className="container mt-4">     
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>                
                 <div className="mb-4">
                     {!isAuthenticated && (
                         <div className="alert alert-info mt-3" role="alert">

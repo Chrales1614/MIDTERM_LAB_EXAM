@@ -83,3 +83,28 @@
         white-space: nowrap;
     }
 }
+
+/* Dashboard content positioning to account for fixed navbar */
+.dashboard-container {
+    padding-top: 80px; /* Push all content below navbar */
+}
+
+.alert-info {
+    position: relative;
+    z-index: 999;
+}
+
+.carousel,
+.admin-dashboard {
+    position: relative;
+    z-index: 900;
+}
+
+@media screen and (max-width: 768px) {
+    .dashboard-container {
+        padding-top: 80px;
+    }
+    .alert-info {
+        margin: 0 10px 15px 10px;
+    }
+}
