@@ -373,12 +373,12 @@ const CartTable = ({ summaryMode, onCartUpdate }) => {
         </div>
   
         {showSummary && (
-          <div className="modal show d-block" tabIndex="-1">
+          <div className="modal show d-block" tabIndex="-1" style={{backdropFilter: "blur(1px)"}}>
             <div className="modal-dialog">
               <div className="modal-content">
                 <div
                   className="modal-header"
-                  style={{ backgroundColor: primaryColor, color: lightText }}
+                  style={{ backgroundColor: primaryColor, color: lightText}}
                 >
                   <h5 className="modal-title">Order Summary</h5>
                   <button

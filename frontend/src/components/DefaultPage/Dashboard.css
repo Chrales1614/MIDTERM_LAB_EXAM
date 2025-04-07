@@ -3,7 +3,9 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    background-color: #f4f4f9;
+    background: 
+        linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+        url("https://i.pinimg.com/736x/31/f2/89/31f289e7a1b73ade73051f206550bb03.jpg") center;
     box-sizing: border-box;  /* Prevents padding from affecting the container size */
 }
 
@@ -98,6 +100,13 @@
 .admin-dashboard {
     position: relative;
     z-index: 900;
+}
+
+.cart-container,
+.modal-content {
+    position: relative;
+    z-index: 900;
+    margin-top: 110px;
 }
 
 @media screen and (max-width: 768px) {

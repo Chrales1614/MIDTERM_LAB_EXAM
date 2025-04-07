@@ -59,7 +59,7 @@ const Cart = () => {
         <>
             <Header cartCount={cartCount} isAuthenticated={isAuthenticated} />
             
-            <div className="container mt-4">
+            <div className="container cart-container">
                 <div className="d-flex justify-content-between align-items-center mb-3">
                     <h3>My {view === "cart" ? "Cart" : "Orders"}</h3>
                 </div>

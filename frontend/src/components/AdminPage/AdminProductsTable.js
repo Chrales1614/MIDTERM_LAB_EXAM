@@ -131,7 +131,7 @@ const AdminProductsTable = () => {
             {deleteError && <div className="alert alert-danger mt-2">{deleteError}</div>}
             {/* Edit Modal */}
             {showEditModal && (
-            <div className="modal show d-block" tabIndex="-1">
+            <div className="modal show d-block" tabIndex="-1" style={{backdropFilter: "blur(1px)"}}>
                 <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
@@ -216,7 +216,7 @@ const AdminProductsTable = () => {
             )}
             {/* Delete Confirmation Modal */}
             {showDeleteModal && (
-                <div className="modal show d-block" tabIndex="-1">
+                <div className="modal show d-block" tabIndex="-1" style={{backdropFilter: "blur(1px)"}}>
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">

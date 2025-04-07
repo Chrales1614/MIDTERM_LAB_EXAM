@@ -136,13 +136,6 @@ const Header = ({ cartCount = 0, isAuthenticated = false }) => {
                                         </Dropdown.Toggle>
 
                                         <Dropdown.Menu className="shadow border-0">
-                                            <Dropdown.Item onClick={() => console.log("Profile settings (not functional)")}>
-                                                Profile Settings
-                                            </Dropdown.Item>
-                                            <Dropdown.Item onClick={() => console.log("Name edit (not functional)")}>
-                                                Edit Name
-                                            </Dropdown.Item>
-                                            <Dropdown.Divider />
                                             <Dropdown.Item onClick={handleLogout} className="text-danger">
                                                 Logout
                                             </Dropdown.Item>

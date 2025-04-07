@@ -142,7 +142,7 @@ const ProductCatalog = ({ products: initialProducts }) => {
                                 textTransform: "uppercase",
                                 letterSpacing: "1px",
                                 borderRadius: "5px",
-                                transition: "background 0.3s, color 0.3s"
+                                transition: "background 0.3s, color 0.3s",
                             }}
                         >
                             {sortOption === "default" ? "Sort By" : 

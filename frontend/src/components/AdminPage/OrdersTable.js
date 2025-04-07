@@ -229,7 +229,7 @@ const OrdersTable = () => {
 
       {/* Order Items Modal */}
       {showModal && selectedOrder && (
-        <div className="modal show d-block" tabIndex="-1">
+        <div className="modal show d-block" tabIndex="-1" style={{backdropFilter: "blur(1px)"}}>
           <div className="modal-dialog modal-lg">
             <div className="modal-content">
               <div className="modal-header">
@@ -286,7 +286,7 @@ const OrdersTable = () => {
 
       {/* Confirmation Modal */}
       {showConfirmModal && selectedOrder && (
-        <div className="modal show d-block" tabIndex="-1">
+        <div className="modal show d-block" tabIndex="-1" style={{backdropFilter: "blur(1px)"}}>
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
