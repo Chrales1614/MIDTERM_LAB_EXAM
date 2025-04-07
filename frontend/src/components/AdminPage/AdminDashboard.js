@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import "bootstrap/dist/css/bootstrap.min.css";
 import AdminProductsTable from "./AdminProductsTable";
 import OrdersTable from "./OrdersTable";
 import axios from "axios";
