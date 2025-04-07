@@ -2,7 +2,8 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-
+import "bootstrap/dist/css/bootstrap.min.css";
+import { CheckCircle } from "lucide-react";
 
 const Register = ({ inModal = false, onSuccess = null }) => {
     const navigate = useNavigate();
