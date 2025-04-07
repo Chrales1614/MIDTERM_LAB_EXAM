@@ -2,10 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-import { motion } from "framer-motion";
-import { Spinner } from "react-bootstrap";
 import ProductCatalog from "./ProductCatalog";
-import Carousel from 'react-bootstrap/Carousel';
+
 
 const CustomerDashboard = ({ isAuthenticated }) => {
     const location = useLocation();

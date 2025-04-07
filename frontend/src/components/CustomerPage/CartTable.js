@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Spinner, Button } from "react-bootstrap";
+
 
 const CartTable = ({ summaryMode, onCartUpdate }) => {
   const [cartItems, setCartItems] = useState([]);
