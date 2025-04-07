@@ -233,93 +233,118 @@ const CartTable = ({ summaryMode, onCartUpdate }) => {
       <div>
         {!summaryMode && <h5>Total Items in Cart: {totalItems}</h5>}
         <div className="table-responsive mt-3 rounded-3 flex flex-column">
-          <table className="table table-bordered shadow-sm">
-            <thead
-              className="text-center"
-              style={{ backgroundColor: primaryColor, color: lightText }}
-            >
-              <tr>
-                {!summaryMode && <th></th>}
-                <th className="text-white">Product</th>
-                <th className="text-white">Price</th>
-                <th className="text-white">Quantity</th>
-                <th className="text-white">Total</th>
-                {!summaryMode && <th className="text-white , text-center">Action</th>}
-              </tr>
-            </thead>
-            <tbody>
-              {displayItems.length > 0 ? (
-                displayItems.map((item) => (
-                  <tr key={item.id}>
-                    {!summaryMode && (
-                      <td className="text-center">
-                        <input className="form-check-input" style={{ cursor: "pointer" , width: "20px", height: "20px" }}
-                          type="checkbox"
-                          checked={selectedItems.includes(item.id)}
-                          onChange={() => handleSelectItem(item.id)}
-                        />
-                      </td>
-                    )}
-                    <td>{item.name}</td>
-                    <td>₱{item.price}</td>
-                    <td>
-                      {!summaryMode ? (
-                        <div className="input-group">
-                          <button
-                            className="btn btn-outline-secondary btn-sm"
-                            type="button"
-                            onClick={() => handleQuantityChange(item.id, parseInt(item.quantity) - 1)}
-                          >
-                            -
-                          </button>
-                          <input
-                            type="number"
-                            className="form-control form-control-sm text-center"
-                            min="1"
-                            value={item.quantity}
-                            onChange={(e) => {
-                              const val = parseInt(e.target.value);
-                              if (val && val > 0) {
-                                handleQuantityChange(item.id, val);
-                              }
-                            }}
-                            style={{ width: "60px" }}
-                          />
-                          <button
-                            className="btn btn-outline-secondary btn-sm"
-                            type="button"
-                            onClick={() => handleQuantityChange(item.id, parseInt(item.quantity) + 1)}
-                          >
-                            +
-                          </button>
-                        </div>
-                      ) : (
-                        item.quantity
-                      )}
-                    </td>
-                    <td>₱{item.price * item.quantity}</td>
-                    {!summaryMode && (
-                      <td>
-                        <Button
-                          variant="danger"
-                          size="sm"
-                          onClick={() => handleRemoveItem(item.id)}
-                        >
-                          Remove
-                        </Button>
-                      </td>
-                    )}
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan={summaryMode ? "4" : "6"} className="text-center text-muted fw-bold py-3">
-                    {summaryMode ? "No items selected." : "Your cart is empty."}
-                  </td>
-                </tr>
+        <table
+          className="table table-bordered shadow-sm"
+          style={{
+            tableLayout: "auto",
+            minWidth: "900px", // force a minimum width so it doesn’t compress
+          }}
+        >
+          <thead
+            className="text-center"
+            style={{ backgroundColor: primaryColor, color: lightText }}
+          >
+            <tr>
+              {!summaryMode && <th style={{ minWidth: "50px" }}></th>}
+              <th className="text-white" style={{ minWidth: "180px" }}>Product</th>
+              <th className="text-white" style={{ minWidth: "100px" }}>Price</th>
+              <th className="text-white" style={{ minWidth: "160px" }}>Quantity</th>
+              <th className="text-white" style={{ minWidth: "100px" }}>Total</th>
+              {!summaryMode && (
+                <th className="text-white text-center" style={{ minWidth: "120px" }}>
+                  Action
+                </th>
               )}
-            </tbody>
-          </table>
+            </tr>
+          </thead>
+          <tbody>
+            {displayItems.length > 0 ? (
+              displayItems.map((item) => (
+                <tr key={item.id} className="text-center">
+                  {!summaryMode && (
+                    <td>
+                      <input
+                        className="form-check-input"
+                        style={{ cursor: "pointer", width: "20px", height: "20px" }}
+                        type="checkbox"
+                        checked={selectedItems.includes(item.id)}
+                        onChange={() => handleSelectItem(item.id)}
+                      />
+                    </td>
+                  )}
+                  <td>{item.name}</td>
+                  <td>₱{item.price}</td>
+                  <td>
+                    {!summaryMode ? (
+                      <div className="input-group justify-content-center">
+                        <button
+                          className="btn btn-outline-secondary btn-sm"
+                          type="button"
+                          onClick={() =>
+                            handleQuantityChange(
+                              item.id,
+                              parseInt(item.quantity) - 1
+                            )
+                          }
+                        >
+                          -
+                        </button>
+                        <input
+                          type="number"
+                          className="form-control form-control-sm text-center"
+                          min="1"
+                          value={item.quantity}
+                          onChange={(e) => {
+                            const val = parseInt(e.target.value);
+                            if (val && val > 0) {
+                              handleQuantityChange(item.id, val);
+                            }
+                          }}
+                          style={{ width: "60px" }}
+                        />
+                        <button
+                          className="btn btn-outline-secondary btn-sm"
+                          type="button"
+                          onClick={() =>
+                            handleQuantityChange(
+                              item.id,
+                              parseInt(item.quantity) + 1
+                            )
+                          }
+                        >
+                          +
+                        </button>
+                      </div>
+                    ) : (
+                      item.quantity
+                    )}
+                  </td>
+                  <td>₱{item.price * item.quantity}</td>
+                  {!summaryMode && (
+                    <td>
+                      <Button
+                        variant="danger"
+                        size="sm"
+                        onClick={() => handleRemoveItem(item.id)}
+                      >
+                        Remove
+                      </Button>
+                    </td>
+                  )}
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td
+                  colSpan={summaryMode ? "4" : "6"}
+                  className="text-center text-muted fw-bold py-3"
+                >
+                  {summaryMode ? "No items selected." : "Your cart is empty."}
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
   
           {cartItems.length > 0 && !summaryMode && (
             <div className="checkout-button-container d-flex justify-content-end">
