@@ -1,0 +1,56 @@
+/* Container for the table */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto; /* Allows horizontal scrolling if table overflows */
+    margin-top: 20px;
+}
+
+/* Styling for the table */
+.table-responsive table {
+    width: 100%; /* Ensures table takes up full width */
+    border-collapse: collapse; /* Clean borders */
+    table-layout: fixed; /* Makes table cells adjust automatically */
+    margin: 0 auto; /* Centers the table */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #faf3e0; /* Light background */
+}
+
+/* Table header */
+.table-responsive th {
+    background-color: rgb(63, 82, 138);
+    text-align: left;
+    padding: 12px;
+}
+
+/* Table body */
+.table-responsive td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    word-wrap: break-word;
+}
+
+/* Table rows styling */
+.table-responsive tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table-responsive tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Adjustments for small screens */
+@media screen and (max-width: 768px) {
+    .table-responsive table {
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+
+    .table-responsive th, .table-responsive td {
+        padding: 8px; /* Reduce padding for smaller screens */
+    }
+
+    .table-responsive td {
+        white-space: nowrap; /* Prevent long text from breaking */
+    }
+}

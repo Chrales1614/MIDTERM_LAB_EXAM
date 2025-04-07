@@ -1,0 +1,85 @@
+/* General layout styling */
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: #f4f4f9;
+    box-sizing: border-box;  /* Prevents padding from affecting the container size */
+}
+
+/* Main content area */
+.main-content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow-y: auto;
+    width: 100%;  /* Ensures it takes full width */
+}
+
+/* Table styling */
+.dashboard-container table {
+    width: 100%;  /* Make the table take up the full width of the container */
+    border-collapse: collapse;
+    table-layout: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-x: auto; /* Enables horizontal scrolling if needed */
+    word-wrap: break-word; /* Ensures that content does not overflow */
+}
+
+/* Table headers and cells styling */
+.dashboard-container th, td {
+    padding: 12px 15px; /* Adding some space for better readability */
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;  /* Ensuring readability */
+    margin : 0;
+}
+
+/* Table header styling */
+.dashboard-container th {
+    background-color: #795548;
+    color: white;
+}
+
+/* Row alternating background color */
+.dashboard-container tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.dashboard-container tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Ensuring that text in table cells doesn't overflow */
+.dashboard-container td {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .dashboard-container table {
+        font-size: 14px;
+    }
+
+    .dashboard-container th, td {
+        padding: 10px;
+    }
+
+    .main-content {
+        padding: 10px;  /* Adding padding on small screens */
+    }
+}
+
+/* Add horizontal scrolling for tables on very small screens */
+@media screen and (max-width: 480px) {
+    .dashboard-container table {
+        overflow-x: auto; /* Make sure the table can scroll horizontally on small screens */
+        display: block;
+        white-space: nowrap;
+    }
+}
