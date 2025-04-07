@@ -4,6 +4,7 @@ import axios from "axios";
 import Header from "./Header";
 import AdminDashboard from '../AdminPage/AdminDashboard';
 import CustomerDashboard from '../CustomerPage/CustomerDashboard';
+import './Dashboard.css';
 
 const Dashboard = () => {
     const navigate = useNavigate();
