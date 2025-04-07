@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Spinner, Button } from "react-bootstrap";
-
+import "bootstrap/dist/css/bootstrap.min.css;
 const CartTable = ({ summaryMode, onCartUpdate }) => {
   const [cartItems, setCartItems] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
