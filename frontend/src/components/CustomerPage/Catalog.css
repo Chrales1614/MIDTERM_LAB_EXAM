@@ -1,0 +1,13 @@
+.catalogSearch{
+    
+    @media(max-width: 768px){
+        font-size: 18px;
+    }
+}
+
+.sortButton{
+
+    @media(max-width: 768px){
+        width: 150px;
+    }
+}

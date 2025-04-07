@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Button, Form, Dropdown } from "react-bootstrap";
 import axios from "axios";
+import Catalog from './Catalog.css'
 import Login from "../DefaultPage/Login"; // Import Login component
 
 const ProductCatalog = ({ products: initialProducts }) => {
@@ -110,9 +111,9 @@ const ProductCatalog = ({ products: initialProducts }) => {
     return (
         <div className="row">
             <div className="col-12 mb-4 d-flex justify-content-between align-items-center">
-                <h3 className="text-dark mb-2">Featured Product:</h3>
+                <h3 className="catalogSearch text-dark mb-2">Featured Product:</h3>
                 <div className="sort-container">
-                    <Dropdown>
+                    <Dropdown className="sortButton">
                         <Dropdown.Toggle 
                             variant="light" 
                             id="dropdown-sort"
@@ -146,14 +147,14 @@ const ProductCatalog = ({ products: initialProducts }) => {
                             }}
                         >
                             {sortOption === "default" ? "Sort By" : 
-                             sortOption === "price-asc" ? "Price: Low to High" :
-                             sortOption === "price-desc" ? "Price: High to Low" :
-                             sortOption === "name-asc" ? "Name: A to Z" :
-                             "Name: Z to A"}
+                                sortOption === "price-asc" ? "Price: Low to High" :
+                                sortOption === "price-desc" ? "Price: High to Low" :
+                                sortOption === "name-asc" ? "Name: A to Z" :
+                                "Name: Z to A"}
                         </Dropdown.Toggle>
 
-                        <Dropdown.Menu>
-                            <Dropdown.Item onClick={() => setSortOption("default")}>Default</Dropdown.Item>
+                        <Dropdown.Menu >
+                            <Dropdown.Item  onClick={() => setSortOption("default")}>Default</Dropdown.Item>
                             <Dropdown.Item onClick={() => setSortOption("price-asc")}>Price: Low to High</Dropdown.Item>
                             <Dropdown.Item onClick={() => setSortOption("price-desc")}>Price: High to Low</Dropdown.Item>
                             <Dropdown.Item onClick={() => setSortOption("name-asc")}>Name: A to Z</Dropdown.Item>

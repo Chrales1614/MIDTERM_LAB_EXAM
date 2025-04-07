@@ -1,0 +1,53 @@
+nav{
+    background-image: linear-gradient(135deg,rgb(33, 41, 65), #000a93d2, rgb(72, 79, 121));
+
+    
+
+}
+
+
+
+
+.searchbar{
+    margin: 0 50px;
+    height: 50px;
+    width: auto;
+    @media (max-width: 767px) {
+        width: 200px;
+        height: 40px;
+        margin: 20px 10px;
+    }
+
+}
+
+.searchButton{
+    height: 50px;
+
+    @media (max-width: 767px) {
+        margin: 20px 0;
+        height: 40px;
+
+    }
+}
+
+.loginButton{
+
+    @media (max-width: 767px) {
+        margin: 7px 5px;
+    }
+
+}
+
+.registerButton{
+
+    @media (max-width: 767px) {
+        margin: 7px 0;
+    }
+}
+
+.headerButtons{
+
+    @media (max-width: 768px) {
+        margin: 7px 0;
+    }
+}

@@ -6,6 +6,7 @@ import { Navbar, Nav, Button, Badge, Container, Dropdown, Form, Modal } from "re
 import { ShoppingCart, User, Zap, Home, Search } from "lucide-react";
 import Login from "./Login";
 import Register from "./Register";
+import './Header.css'
 
 const Header = ({ cartCount = 0, isAuthenticated = false }) => {
     const navigate = useNavigate();
@@ -46,7 +47,6 @@ const Header = ({ cartCount = 0, isAuthenticated = false }) => {
                 expand="lg" 
                 className="shadow-lg p-3 mb-3 border-0" 
                 style={{ 
-                    background: "linear-gradient(135deg,rgb(33, 41, 65),rgb(72, 79, 121))", 
                     color: "#FFF", 
                     boxSizing: "border-box", 
                     width: "100%",
@@ -59,7 +59,7 @@ const Header = ({ cartCount = 0, isAuthenticated = false }) => {
                 <Container fluid>
                     <Navbar.Brand 
                         onClick={() => navigate("/customerdashboard")}
-                        className="text-light fw-bold fs-4 d-flex align-items-center cursor-pointer" 
+                        className="text-light fw-bold fs-4 d-lg-flex flex-column align-items-stretch align-items-lg-center cursor-pointer p-0 m-0" 
                         style={{ letterSpacing: "2px", fontFamily: "'Poppins', sans-serif", cursor: "pointer" }}
                     >
                         <Zap 
@@ -85,20 +85,20 @@ const Header = ({ cartCount = 0, isAuthenticated = false }) => {
                                     <Form.Control
                                         type="search"
                                         placeholder="Search products..."
-                                        className="me-2 rounded-pill"
+                                        className="searchbar me-2 rounded-pill"
                                         aria-label="Search"
                                         value={searchTerm}
                                         onChange={(e) => setSearchTerm(e.target.value)}
-                                        style={{ minWidth: "700px" }}
+                                        
                                     />
-                                    <Button variant="light" className="rounded-pill d-flex align-items-center" type="submit">
+                                    <Button  variant="light" className="searchButton rounded-pill d-flex align-items-center" type="submit">
                                         <Search size={18} />
                                     </Button>
                                 </Form>
                             )}
                         </Nav>
                         
-                        <Nav className="align-items-center">
+                        <Nav className="align-items-center d-lg-flex" >
                             {isAuthenticated ? (
                                 <>
                                     {role === "customer" && (
@@ -114,8 +114,8 @@ const Header = ({ cartCount = 0, isAuthenticated = false }) => {
 
                                     {role === "customer" && (
                                         <Button 
-                                            variant="outline-light" 
-                                            className="d-flex align-items-center me-3 rounded-pill px-3 py-2 border-0 shadow-sm" 
+                                            variant="outline-light"
+                                            className=" d-flex align-items-center me-3 rounded-pill px-3 py-2 border-0 shadow-sm btn-sm-vw-100" 
                                             onClick={() => navigate("/cart")}
                                         > 
                                             <ShoppingCart size={20} className="me-1" />
@@ -143,22 +143,22 @@ const Header = ({ cartCount = 0, isAuthenticated = false }) => {
                                     </Dropdown>
                                 </>
                             ) : (
-                                <>
+                                < div className='headerButtons'>
                                     <Button 
                                         variant="outline-light" 
-                                        className="me-2 rounded-pill"
+                                        className="loginButton me-2 rounded-pill"
                                         onClick={() => setShowLoginModal(true)}
                                     >
                                         Login
                                     </Button>
                                     <Button 
                                         variant="light" 
-                                        className="rounded-pill"
+                                        className="registerButton rounded-pill"
                                         onClick={() => setShowRegisterModal(true)}
                                     >
                                         Register
                                     </Button>
-                                </>
+                                </div>
                             )}
                         </Nav>
                     </Navbar.Collapse>
