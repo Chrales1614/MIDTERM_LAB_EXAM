@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-
+import { Navbar, Nav, Button, Badge, Container, Dropdown, Form, Modal } from "react-bootstrap";
+import { ShoppingCart, User, Zap, Home, Search } from "lucide-react";
 import Login from "./Login";
 import Register from "./Register";
 
