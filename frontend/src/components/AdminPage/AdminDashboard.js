@@ -39,30 +39,37 @@ const AdminDashboard = () => {
     return (
         <div className="container mt-4">
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
-                <div className="d-flex justify-content-between align-items-center mb-3">
-                    <div className="btn-group">
+            <div className="d-flex flex-column align-items-center mb-3">
+                <div className="btn-group mb-3 d-flex justify-content-center" style={{ width: "100%" }}>
                     <button
-                        className={`btn ${view === "products" ? "" : "btn-outline-secondary"}`}
-                        onClick={() => setView("products")}
-                        style={{
-                            backgroundColor: view === "products" ? "rgb(1, 0, 128)" : "transparent",
-                            borderColor: "rgb(1, 0, 128)",
-                            color: view === "products" ? "white" : "rgb(1, 0, 128)"
-                        }}
+                    className={`btn ${view === "products" ? "" : "btn-outline-secondary"}`}
+                    onClick={() => setView("products")}
+                    style={{
+                        flex: 1,
+                        backgroundColor: view === "products" ? "rgb(1, 0, 128)" : "transparent",
+                        borderColor: "rgb(1, 0, 128)",
+                        color: view === "products" ? "white" : "rgb(1, 0, 128)",
+                        borderRight: "none",
+                    }}
                     >
-                        Products
+                    Products
                     </button>
                     <button
-                        className={`btn ${view === "orders" ? "btn-secondary" : "btn-outline-secondary"}`}
-                        onClick={() => setView("orders")}
+                    className={`btn ${view === "orders" ? "btn-secondary" : "btn-outline-secondary"}`}
+                    onClick={() => setView("orders")}
+                    style={{ flex: 1 }}
                     >
-                        Orders
+                    Orders
                     </button>
-                      </div>
-                    {view === "products" && (
-                        <button className="btn btn-success" onClick={() => setShowAddModal(true)}>Add Product</button>
-                    )}
                 </div>
+
+                {view === "products" && (
+                    <button className="btn btn-success" style={{width: "100%", boxShadow: "rgba(61, 61, 61, 0.35) 0 0 2px 2px"}} onClick={() => setShowAddModal(true)}>
+                    Add Product
+                    </button>
+                )}
+                </div>
+ 
                 <div className="card p-3 shadow-lg">
                     {/* Wrap the table in a responsive container */}
                     {view === "products" ? (
