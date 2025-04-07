@@ -229,208 +229,208 @@ const CartTable = ({ summaryMode, onCartUpdate }) => {
     ? cartItems.filter(item => selectedItems.includes(item.id)) 
     : cartItems;
 
-  return (
-    <div>
-      {!summaryMode && <h5>Total Items in Cart: {totalItems}</h5>}
-      <div className="table-responsive mt-3 rounded-3 flex flex-column">
-        <table className="table table-bordered shadow-sm">
-          <thead
-            className="text-center"
-            style={{ backgroundColor: primaryColor, color: lightText }}
-          >
-            <tr>
-              {!summaryMode && <th></th>}
-              <th className="text-white">Product</th>
-              <th className="text-white">Price</th>
-              <th className="text-white">Quantity</th>
-              <th className="text-white">Total</th>
-              {!summaryMode && <th className="text-white , text-center">Action</th>}
-            </tr>
-          </thead>
-          <tbody>
-            {displayItems.length > 0 ? (
-              displayItems.map((item) => (
-                <tr key={item.id}>
-                  {!summaryMode && (
-                    <td className="text-center">
-                      <input className="form-check-input" style={{ cursor: "pointer" , width: "20px", height: "20px" }}
-                        type="checkbox"
-                        checked={selectedItems.includes(item.id)}
-                        onChange={() => handleSelectItem(item.id)}
-                      />
-                    </td>
-                  )}
-                  <td>{item.name}</td>
-                  <td>₱{item.price}</td>
-                  <td>
-                    {!summaryMode ? (
-                      <div className="input-group">
-                        <button
-                          className="btn btn-outline-secondary btn-sm"
-                          type="button"
-                          onClick={() => handleQuantityChange(item.id, parseInt(item.quantity) - 1)}
-                        >
-                          -
-                        </button>
-                        <input
-                          type="number"
-                          className="form-control form-control-sm text-center"
-                          min="1"
-                          value={item.quantity}
-                          onChange={(e) => {
-                            const val = parseInt(e.target.value);
-                            if (val && val > 0) {
-                              handleQuantityChange(item.id, val);
-                            }
-                          }}
-                          style={{ width: "60px" }}
-                        />
-                        <button
-                          className="btn btn-outline-secondary btn-sm"
-                          type="button"
-                          onClick={() => handleQuantityChange(item.id, parseInt(item.quantity) + 1)}
-                        >
-                          +
-                        </button>
-                      </div>
-                    ) : (
-                      item.quantity
-                    )}
-                  </td>
-                  <td>₱{item.price * item.quantity}</td>
-                  {!summaryMode && (
-                    <td>
-                      <Button
-                        variant="danger"
-                        size="sm"
-                        onClick={() => handleRemoveItem(item.id)}
-                      >
-                        Remove
-                      </Button>
-                    </td>
-                  )}
-                </tr>
-              ))
-            ) : (
+    return (
+      <div>
+        {!summaryMode && <h5>Total Items in Cart: {totalItems}</h5>}
+        <div className="table-responsive mt-3 rounded-3 flex flex-column">
+          <table className="table table-bordered shadow-sm">
+            <thead
+              className="text-center"
+              style={{ backgroundColor: primaryColor, color: lightText }}
+            >
               <tr>
-                <td colSpan={summaryMode ? "4" : "6"} className="text-center text-muted fw-bold py-3">
-                  {summaryMode ? "No items selected." : "Your cart is empty."}
-                </td>
+                {!summaryMode && <th></th>}
+                <th className="text-white">Product</th>
+                <th className="text-white">Price</th>
+                <th className="text-white">Quantity</th>
+                <th className="text-white">Total</th>
+                {!summaryMode && <th className="text-white , text-center">Action</th>}
               </tr>
-            )}
-          </tbody>
-        </table>
-
-        {cartItems.length > 0 && !summaryMode && (
-          <div className="checkout-button-container d-flex justify-content-end">
-          <Button
-            variant="background-color: rgb(63, 83, 136), font-color: white"
-            className="rounded px-5 py-2 mt-3 flex justify-content-center"
-            onMouseOver={(e) => {
-              e.target.style.backgroundColor = "rgb(1, 0, 128)";  // Navy Blue
-              e.target.style.borderColor = "rgb(1, 0, 128)";      // Navy Blue
-              e.target.style.color = "white";                     // White text
-            }}
-            onMouseOut={(e) => {
-              e.target.style.backgroundColor = "rgb(66, 83, 136)"; // Original background color
-              e.target.style.borderColor = "rgb(66, 83, 136)";     // Original border color
-              e.target.style.color = "white";                     // White text
-            }}
-            onClick={() => setShowSummary(true)}
-            disabled={selectedItems.length === 0}
-          >
-            Checkout Selected
-          </Button>
+            </thead>
+            <tbody>
+              {displayItems.length > 0 ? (
+                displayItems.map((item) => (
+                  <tr key={item.id}>
+                    {!summaryMode && (
+                      <td className="text-center">
+                        <input className="form-check-input" style={{ cursor: "pointer" , width: "20px", height: "20px" }}
+                          type="checkbox"
+                          checked={selectedItems.includes(item.id)}
+                          onChange={() => handleSelectItem(item.id)}
+                        />
+                      </td>
+                    )}
+                    <td>{item.name}</td>
+                    <td>₱{item.price}</td>
+                    <td>
+                      {!summaryMode ? (
+                        <div className="input-group">
+                          <button
+                            className="btn btn-outline-secondary btn-sm"
+                            type="button"
+                            onClick={() => handleQuantityChange(item.id, parseInt(item.quantity) - 1)}
+                          >
+                            -
+                          </button>
+                          <input
+                            type="number"
+                            className="form-control form-control-sm text-center"
+                            min="1"
+                            value={item.quantity}
+                            onChange={(e) => {
+                              const val = parseInt(e.target.value);
+                              if (val && val > 0) {
+                                handleQuantityChange(item.id, val);
+                              }
+                            }}
+                            style={{ width: "60px" }}
+                          />
+                          <button
+                            className="btn btn-outline-secondary btn-sm"
+                            type="button"
+                            onClick={() => handleQuantityChange(item.id, parseInt(item.quantity) + 1)}
+                          >
+                            +
+                          </button>
+                        </div>
+                      ) : (
+                        item.quantity
+                      )}
+                    </td>
+                    <td>₱{item.price * item.quantity}</td>
+                    {!summaryMode && (
+                      <td>
+                        <Button
+                          variant="danger"
+                          size="sm"
+                          onClick={() => handleRemoveItem(item.id)}
+                        >
+                          Remove
+                        </Button>
+                      </td>
+                    )}
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan={summaryMode ? "4" : "6"} className="text-center text-muted fw-bold py-3">
+                    {summaryMode ? "No items selected." : "Your cart is empty."}
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+  
+          {cartItems.length > 0 && !summaryMode && (
+            <div className="checkout-button-container d-flex justify-content-end">
+            <Button
+              variant="background-color: rgb(63, 83, 136), font-color: white"
+              className="rounded px-5 py-2 mt-3 flex justify-content-center"
+              onMouseOver={(e) => {
+                e.target.style.backgroundColor = "rgb(1, 0, 128)";  // Navy Blue
+                e.target.style.borderColor = "rgb(1, 0, 128)";      // Navy Blue
+                e.target.style.color = "white";                     // White text
+              }}
+              onMouseOut={(e) => {
+                e.target.style.backgroundColor = "rgb(66, 83, 136)"; // Original background color
+                e.target.style.borderColor = "rgb(66, 83, 136)";     // Original border color
+                e.target.style.color = "white";                     // White text
+              }}
+              onClick={() => setShowSummary(true)}
+              disabled={selectedItems.length === 0}
+            >
+              Checkout Selected
+            </Button>
+          </div>
+          
+          )}
+  
         </div>
-        
-        )}
-
-      </div>
-
-      {showSummary && (
-        <div className="modal show d-block" tabIndex="-1">
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div
-                className="modal-header"
-                style={{ backgroundColor: primaryColor, color: lightText }}
-              >
-                <h5 className="modal-title">Order Summary</h5>
-                <button
-                  type="button"
-                  className="btn-close"
-                  onClick={() => setShowSummary(false)}
-                ></button>
-              </div>
-              <div className="modal-body">
-                {checkoutStep === 1 ? (
-                  <>
-                    <p>Total Quantity: {totalQuantity}</p>
-                    <p>Total Price: ₱{totalPrice}</p>
-                  </>
-                ) : (
-                  <>
-                    <label>Enter Address:</label>
-                    <input
-                      type="text"
-                      className="form-control mb-2"
-                      value={address}
-                      onChange={(e) => setAddress(e.target.value)}
-                      placeholder="Enter your address"
-                      required
-                    />
-                    <label>Contact Number:</label>
-                    <input
-                      type="text"
-                      className="form-control mb-2"
-                      value={contact}
-                      onChange={(e) => setContact(e.target.value)}
-                      placeholder="Enter your contact number"
-                      required
-                    />
-                    <label>Payment Method:</label>
-                    <select
-                      className="form-control mb-2"
-                      value={paymentMethod}
-                      onChange={(e) => setPaymentMethod(e.target.value)}
-                      required
+  
+        {showSummary && (
+          <div className="modal show d-block" tabIndex="-1">
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div
+                  className="modal-header"
+                  style={{ backgroundColor: primaryColor, color: lightText }}
+                >
+                  <h5 className="modal-title">Order Summary</h5>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    onClick={() => setShowSummary(false)}
+                  ></button>
+                </div>
+                <div className="modal-body">
+                  {checkoutStep === 1 ? (
+                    <>
+                      <p>Total Quantity: {totalQuantity}</p>
+                      <p>Total Price: ₱{totalPrice}</p>
+                    </>
+                  ) : (
+                    <>
+                      <label>Enter Address:</label>
+                      <input
+                        type="text"
+                        className="form-control mb-2"
+                        value={address}
+                        onChange={(e) => setAddress(e.target.value)}
+                        placeholder="Enter your address"
+                        required
+                      />
+                      <label>Contact Number:</label>
+                      <input
+                        type="text"
+                        className="form-control mb-2"
+                        value={contact}
+                        onChange={(e) => setContact(e.target.value)}
+                        placeholder="Enter your contact number"
+                        required
+                      />
+                      <label>Payment Method:</label>
+                      <select
+                        className="form-control mb-2"
+                        value={paymentMethod}
+                        onChange={(e) => setPaymentMethod(e.target.value)}
+                        required
+                      >
+                        <option value="" disabled>Select a payment method</option>
+                        <option value="Cash on Delivery">Cash on Delivery</option>
+                        <option value="Gcash">Gcash</option>
+                        <option value="Maya">Maya</option>
+                        <option value="Credit/Debit Card">Credit/Debit Card</option>
+                      </select>
+                    </>
+                  )}
+                </div>
+                <div className="modal-footer">
+                  {checkoutStep === 1 ? (
+                    <Button
+                      style={{ backgroundColor: primaryColor, borderColor: primaryColor }}
+                      onClick={() => setCheckoutStep(2)}
+                      disabled={selectedItems.length === 0}
                     >
-                      <option value="" disabled>Select a payment method</option>
-                      <option value="Cash on Delivery">Cash on Delivery</option>
-                      <option value="Gcash">Gcash</option>
-                      <option value="Maya">Maya</option>
-                      <option value="Credit/Debit Card">Credit/Debit Card</option>
-                    </select>
-                  </>
-                )}
-              </div>
-              <div className="modal-footer">
-                {checkoutStep === 1 ? (
-                  <Button
-                    style={{ backgroundColor: primaryColor, borderColor: primaryColor }}
-                    onClick={() => setCheckoutStep(2)}
-                    disabled={selectedItems.length === 0}
-                  >
-                    Next
+                      Next
+                    </Button>
+                  ) : (
+                    <Button variant="success" onClick={handleCheckout}>
+                      Checkout
+                    </Button>
+                  )}
+                  <Button variant="secondary" onClick={() => {
+                    setShowSummary(false);
+                    setCheckoutStep(1);
+                  }}>
+                    Cancel
                   </Button>
-                ) : (
-                  <Button variant="success" onClick={handleCheckout}>
-                    Checkout
-                  </Button>
-                )}
-                <Button variant="secondary" onClick={() => {
-                  setShowSummary(false);
-                  setCheckoutStep(1);
-                }}>
-                  Cancel
-                </Button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
-    </div>
-  );
-};
-
-export default CartTable;
+        )}
+      </div>
+    );
+  };
+  
+  export default CartTable;
