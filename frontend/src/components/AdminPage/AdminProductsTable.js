@@ -80,34 +80,53 @@ const AdminProductsTable = () => {
             {loading ? (
                 <p>Loading products...</p>
             ) : (
-                <table className="table table-bordered">
+                <table
+                    className="table table-bordered"
+                    style={{
+                        tableLayout: "auto",
+                        minWidth: "900px",
+                        maxWidth: "100%",
+                    }}
+                    >
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Price</th>
-                            <th>Stock</th>
-                            <th>Image URL</th>
-                            <th>Actions</th>
+                        <th style={{ minWidth: "120px" }}>Name</th>
+                        <th style={{ minWidth: "200px" }}>Description</th>
+                        <th style={{ minWidth: "80px" }}>Price</th>
+                        <th style={{ minWidth: "80px" }}>Stock</th>
+                        <th style={{ minWidth: "150px" }}>Image URL</th>
+                        <th style={{ minWidth: "140px" }}>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         {products.map((product) => (
-                            <tr key={product.id}>
-                                <td>{product.name}</td>
-                                <td>{product.description}</td>
-                                <td>₱{product.price}</td>
-                                <td>{product.stock}</td>
-                                <td>{product.image}</td>
-                                <td>
-                                    <button className="btn btn-warning btn-sm me-2" onClick={() => handleEdit(product)}>Edit</button>
-                                    <button className="btn btn-danger btn-sm" onClick={() => handleDelete(product.id)}>Delete</button>
-                                </td>
-                            </tr>
+                        <tr key={product.id}>
+                            <td>{product.name}</td>
+                            <td>{product.description}</td>
+                            <td>₱{parseFloat(product.price).toFixed(2)}</td>
+                            <td>{product.stock}</td>
+                            <td>{product.image}</td>
+                            <td>
+                            <div className="d-flex gap-2">
+                                <button
+                                className="btn btn-warning btn-sm"
+                                onClick={() => handleEdit(product)}
+                                >
+                                Edit
+                                </button>
+                                <button
+                                className="btn btn-danger btn-sm"
+                                onClick={() => handleDelete(product.id)}
+                                >
+                                Delete
+                                </button>
+                            </div>
+                            </td>
+                        </tr>
                         ))}
                     </tbody>
-                </table>
-            )}
+                    </table>
+                )}
             {/* Error Message */}
             {deleteError && <div className="alert alert-danger mt-2">{deleteError}</div>}
             {/* Edit Modal */}
